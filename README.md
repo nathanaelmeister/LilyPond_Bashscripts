@@ -10,7 +10,7 @@ This scripts purpose is to create the coresponding LilyPond compileable `ly`file
 - **make-single-pages.sh**   # Creates the single-pages files for **PDF** and **MIDI** output,
                          # to be run in `input-files` folder.
 - **make-two-systems.sh**    # Creates the single-pages files with two voices for PDF and MIDI output,
-                         # to be run in `input-files` folder.
+                         # to be run in `input-files` folder of second voice.
 
 This two scripts only purpose is to strip a `\relative {` block off a `\score` block (handle with care!!!)
 

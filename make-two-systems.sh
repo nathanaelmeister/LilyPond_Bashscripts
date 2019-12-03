@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# run in folder with input files:
-# ./input-files/
+# run in folder with input files folder of second voice:
+# ./input-files-II/
 
 for file in *.ily; do
 
