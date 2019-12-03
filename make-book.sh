@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # run in parent directory. And select ${dir} directory
-# like: `bash script.sh ${dir}-dir`
+# like: `bash script.sh folder-with-infiles/`
 
 dir="$1"
 bookname="Sebastian_Lee_-_Op_70_-_40_easy_etudes.ly"

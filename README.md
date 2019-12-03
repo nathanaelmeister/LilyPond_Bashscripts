@@ -6,7 +6,7 @@ These scripts do not have any other purpose then being used within this [LilyPon
 This scripts purpose is to create the coresponding LilyPond compileable `ly`files:
 
 
-- **make-book.sh**           # Creates the main Book.ly to be run in `root-directory`.
+- **make-book.sh**           # Creates the main Book.ly to be run in `root-directory`. Run like: `bash make-book.sh ./infiles/`
 - **make-single-pages.sh**   # Creates the single-pages files for **PDF** and **MIDI** output,
                          # to be run in `input-files` folder.
 - **make-two-systems.sh**    # Creates the single-pages files with two voices for PDF and MIDI output,
