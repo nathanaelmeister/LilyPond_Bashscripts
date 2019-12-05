@@ -1,20 +1,25 @@
 #!/bin/bash
 
-# run in folder with input files folder of second voice:
-# ./input-files-II/
+# run in folder with input files: `./input-files-II/`
+# for only processing single files, select `file `as first argument
+# example with for-loop: `cd ./input-files-II/; bash script.sh`
+# example with single file: `cd ./input-files-II/; bash script.sh infileII.ily`
 
-for file in *.ily; do
+exme() {
 
   num=$( awk -F'_' '{print $2}' <<< "$file" |
              awk -F'.' '{print $1}' |
              awk -F'-' '{print $1}' )
 
+  # check if ${file//.ily/.ly} for replacing leading characters `^`
   getnum=$( sed 's/^0//g' <<< "$num" )
 
   parent=$(pwd | awk -F'/' '{print $NF}')
-  part=$(awk -F'-' '{print $NF}' <<< "$parent")
 
-  chname=${file//.ily/.ly}
+  # these seem to be unused, check for next version.
+  # part=$(awk -F'-' '{print $NF}' <<< "$parent")
+  # chname=${file//.ily/.ly}
+
   filepath="../single-pages-celloI_and_II/S_Lee_-_Op_70_-_I_u_II_Nr_${num}.ly"
 
   # check if tuplet-bow is used and create `\include` line
@@ -81,4 +86,19 @@ for file in *.ily; do
 
   # remove multible blank lines if needed:
   sed -i 'N;/^\n$/D;P;D;' "$filepath"
+}
+
+if [ -n "$1" ]; then
+
+  file="$1"
+  exme "$@"
+
+  exit
+fi
+
+for file in *.ily; do
+
+  exme
+
 done
+

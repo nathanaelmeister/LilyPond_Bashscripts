@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# run in folder with input files:
-# ./input-files/
+# run in folder with input files: `./input-files/`
+# for only processing single files, select `file `as first argument
+# example with for-loop: `cd ./input-files/; bash script.sh`
+# example with single file: `cd ./input-files/; bash script.sh infile.ily`
 
-for file in *.ily; do
+exme() {
 
   getnum=$(awk -F'_' '{print $2}' <<< "$file" |
              awk -F'.' '{print $1}' |
@@ -71,4 +73,18 @@ for file in *.ily; do
 
   # remove multible blank lines if needed:
   sed -i 'N;/^\n$/D;P;D;' "$filepath"
+}
+
+if [ -n "$1" ]; then
+
+  file="$1"
+  exme "$@"
+
+  exit
+fi
+
+for file in *.ily; do
+
+  exme
+
 done
