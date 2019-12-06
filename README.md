@@ -14,6 +14,20 @@ This scripts purpose is to create the coresponding LilyPond compileable `ly`file
 
 ______________________________________________________________________________
 
+## Update 0.0.2-15
+
+The first three script runs described below are automated within the new
+
+  **run.sh** script.
+
+The usage is pretty straight forward:
+
+- first create you _WD/infile.ily with your notes within the `\relative {` block, but without the relative. One line for one bar.
+- second run the script like this: `bash run.sh NN` while `NN` is the piece number, use leading zeros.
+- that is basicaly it. Everything else should run automated.
+- well there is one *bug*, but I'm sure you'll find it out yourself *:-)*
+______________________________________________________________________________
+
 ## Usage:
 
 **1.) Script-run:** `bash make-single-pages.sh` in `./input-files-voiceI./`
