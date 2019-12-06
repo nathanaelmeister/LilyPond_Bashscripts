@@ -1,12 +1,22 @@
 #!/bin/bash
 
 #=============================================================#
-# run this after you added the second voice template          #
-# in projects `./` root directory:                            #
+# run this after you added the second voice template in _WD/  #
+# run script in projects `./` root directory:                 #
 #                                                             #
 # type in piece number (with leading zeros) as first argument #
 # `$ bash script.sh 01` for adding `Score_Nr.01.ly`           #
-#=============================================================#
+#=============================================================#===#
+#                                                                 #
+# Your (W)orking (D)irectory: `./_WD`                             #
+# needs to contain the following files:                           #
+#                                                                 #
+#  templ-1.ily (first part of LilyPond template file)             #
+#  infile.ily  (your score, where bars and numbering to be added) #
+#  templ-2.ily (second part of LilyPond template file)            #
+#                                                                 #
+# This script is highly destructive, handle with care!            #
+#=================================================================#
 
 nn="$1"
 
@@ -18,13 +28,11 @@ if [ -z "$nn" ]; then
 
 fi
 
-ext="$HOME/Dokumente/Command-Line/MyScripts/Lilypond/Bar-Numbers/simpler-4.sh"
-
 cd _WD/ || exit
 
-if [ -f "$ext" ]; then
+if [ -f ../_scripts/add_bar_numbers.sh ]; then
 
-  bash "$ext"
+  bash ../_scripts/add_bar_numbers.sh
 
 else
   echo
@@ -32,7 +40,7 @@ else
   echo "please file a bug report..."
   echo
   exit
-done
+fi
 
 mv -i ./infile.ily "../input-files-celloII/Nr_${nn}-celloII.ily"
 
@@ -41,9 +49,9 @@ cd ../input-files-celloII/ || exit
 bash ../_scripts/make-single-pages.sh "Nr_${nn}-celloII.ily"
 bash ../_scripts/make-two-systems.sh "Nr_${nn}-celloII.ily"
 
-# added a check on input file; this higly needed ========#
+# added a check on input file; this was higly needed ====#
 #                                                        #
-# to enter time signature and key:                       #
+# at least to enter time signature and key:              #
 nano -ET2 "../input-files-celloII/Nr_${nn}-celloII.ily"  #
 #========================================================#
 
