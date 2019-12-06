@@ -18,8 +18,21 @@ if [ -z "$nn" ]; then
 
 fi
 
+ext="$HOME/Dokumente/Command-Line/MyScripts/Lilypond/Bar-Numbers/simpler-4.sh"
+
 cd _WD/ || exit
-bash "$HOME/Dokumente/Command-Line/MyScripts/Lilypond/Bar-Numbers/simpler-4.sh"
+
+if [ -f "$ext" ]; then
+
+  bash "$ext"
+
+else
+  echo
+  echo "sorry, there is a script missing."
+  echo "please file a bug report..."
+  echo
+  exit
+done
 
 mv -i ./infile.ily "../input-files-celloII/Nr_${nn}-celloII.ily"
 
@@ -29,6 +42,7 @@ bash ../_scripts/make-single-pages.sh "Nr_${nn}-celloII.ily"
 bash ../_scripts/make-two-systems.sh "Nr_${nn}-celloII.ily"
 
 # added a check on input file; this higly needed ========#
+#                                                        #
 # to enter time signature and key:                       #
 nano -ET2 "../input-files-celloII/Nr_${nn}-celloII.ily"  #
 #========================================================#
