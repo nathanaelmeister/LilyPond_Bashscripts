@@ -35,7 +35,7 @@ nano -ET2 "../input-files-celloII/Nr_${nn}-celloII.ily"  #
 
 cd ../single-pages-celloI_and_II/ || exit
 
-if file "S_Lee_-_Op_70_-_I_u_II_Nr_${nn}.pdf"; then
+if [ -f "S_Lee_-_Op_70_-_I_u_II_Nr_${nn}.ly" ]; then
 
   lilypond "S_Lee_-_Op_70_-_I_u_II_Nr_${nn}.ly"
 
